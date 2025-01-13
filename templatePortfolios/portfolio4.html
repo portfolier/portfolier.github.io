@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Professional Portfolio</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        h1, h2, h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Color Palette */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background-color: #ecf0f1;
+            --footer-color: #34495e;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navbar */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--primary-color);
+            z-index: 100;
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        nav ul li {
+            margin: 0 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, #2c3e50, #3498db);
+            color: #fff;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .hero .btn {
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .hero .btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* About Me Section */
+        .about {
+            padding: 60px 0;
+            background-color: var(--background-color);
+            text-align: center;
+        }
+        .about h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+        .about .about-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .about .about-info div {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .about .about-info div:hover {
+            transform: translateY(-10px);
+        }
+        .about .about-info h3 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .about .about-info p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 80px 0;
+            background-color: #fff;
+            text-align: center;
+        }
+        .projects h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+        .projects .project-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .projects .project-cards .card {
+            background-color: #f7f7f7;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .projects .project-cards .card:hover {
+            transform: translateY(-10px);
+        }
+        .projects .project-cards .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .projects .project-cards .card .description {
+            padding: 20px;
+        }
+        .projects .project-cards .card .description h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .projects .project-cards .card .description p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 60px 0;
+            background-color: var(--background-color);
+            text-align: center;
+        }
+        .contact h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+        .contact-info p {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--footer-color);
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav>
+    <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Hero Section -->
+<section id="hero" class="hero">
+    <div class="container">
+        <h1>John Doe</h1>
+        <p>Web Developer & Designer</p>
+        <a href="#about" class="btn">Learn More</a>
+    </div>
+</section>
+
+<!-- About Me Section -->
+<section id="about" class="about">
+    <div class="container">
+        <h2>About Me</h2>
+        <div class="about-info">
+            <div>
+                <h3>Education</h3>
+                <p>Bachelor of Computer Science - XYZ University</p>
+            </div>
+            <div>
+                <h3>Work Experience</h3>
+                <p>Web Developer at ABC Company - 3 years</p>
+            </div>
+            <div>
+                <h3>Skills</h3>
+                <p>HTML, CSS, JavaScript, React, Node.js</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects">
+    <div class="container">
+        <h2>My Projects</h2>
+        <div class="project-cards">
+            <div class="card">
+                <div class="description">
+                    <h3>Project One</h3>
+                    <p>A responsive website built using HTML, CSS, and JavaScript.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="description">
+                    <h3>Project Two</h3>
+                    <p>A full-stack application with React and Node.js.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x250" alt="Project 3">
+                <div class="description">
+                    <h3>Project Three</h3>
+                    <p>An e-commerce platform built using React and Express.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <div class="container">
+        <h2>Contact Me</h2>
+        <p>If you'd like to get in touch, you can reach me through the following:</p>
+        <div class="contact-info">
+            <p>Email: <a href="mailto:john.doe@example.com">john.doe@example.com</a></p>
+            <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>© 2025 John Doe</p>
+</footer>
+
+</body>
+</html>

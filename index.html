@@ -1,0 +1,140 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolier</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="header">
+    <h1>Portfolier</h1>
+    <h2>The <b>best, cheapest and easiest</b> way to get a portfolio.</h2>
+    <a href="#about" class="hero-btn">Learn More</a>
+</div>
+<nav>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#websites">Examples</a></li>
+        <li><a href="#order">Order</a></li>
+    </ul>
+</nav>
+<br>
+<h1 class="title">PORTFOLIER</h1>
+<div id="about">
+    <p><b>Portfolier</b> is a service that creates personal portfolios. We create <b>high-quality</b> website portfolios. We have a <b>individual approach</b> to customers - you can request extra features or a particular style. We provide <b>free static hosting</b> under this domain, but we also supply the <b>source code</b> of the personally created websites, which you can host on any of your favourite hosting services.</p>
+</div>
+<br>
+<br>
+<h1 class="title">EXAMPLES</h1>
+<div id="websiteUnFocus" onclick="websiteFocus(-1)"><div style="rotate: -45deg"></div><div style="rotate: 225deg"></div></div>
+<div id="websites">
+    <div onclick="websiteFocus(0)" class="websiteExample"><iframe src="templatePortfolios/portfolio1.html" scrolling="no"></iframe></div>
+    <div onclick="websiteFocus(1)" class="websiteExample"><iframe src="templatePortfolios/portfolio2.html" scrolling="no"></iframe></div>
+    <div onclick="websiteFocus(2)" class="websiteExample" style="transform: translateX(100vw) rotate(-90deg)"><iframe src="templatePortfolios/portfolio3.html" scrolling="no"></iframe></div>
+    <div onclick="websiteFocus(3)" class="websiteExample" style="transform: translateX(100vw) rotate(-90deg)"><iframe src="templatePortfolios/portfolio4.html" scrolling="no"></iframe></div>
+</div>
+<h1 class="title">ORDER</h1>
+<div id="order">
+    <p><b>Convinced?</b> order now and get your own portfolio website for <b>only $5!</b></p>
+    <button onclick="document.location.href='order.html'">ORDER NOW</button>
+    <p><b>Not convinced yet?</b> Visit our <b>contact section</b>, and we will answer any questions you have about this service!</p>
+    <button onclick="document.location.href='#contact'">CONTACT US</button>
+</div>
+<h1 class="title">CONTACT</h1>
+<div id="contact">
+    <p>Any questions? <b>Contact us here!</b></p>
+    <form>
+        <input id="name" type="text" required placeholder=" ">
+        <label for="name">Name & Surname</label>
+
+        <input id="email" type="email" required placeholder=" ">
+        <label for="email">Email address</label>
+
+        <textarea id="question" required placeholder="Write your question..."></textarea>
+        <label for="question"></label>
+
+        <input type="submit" value="SEND">
+    </form>
+</div>
+<br>
+</body>
+<script>
+    let websiteClone = null;
+    function websiteFocus(i) {
+        let anyChanged = false;
+        document.querySelectorAll(".websiteExample").forEach((website, index) => {
+            if (index === i) {
+                if (websiteClone !== null) return;
+                websiteClone = website.cloneNode(true);
+                document.body.appendChild(websiteClone);
+                websiteClone.removeAttribute("style");
+                websiteClone.removeAttribute("onclick");
+                websiteClone.style.transform = "translateX(-100vw) translateY(-100vw)";
+                websiteClone.className = "websiteExampleFull";
+                websiteClone.firstChild.scrolling = "yes";
+                setTimeout(() => {
+                    websiteClone.style.scale = "1"
+                    websiteClone.style.transform = "translateX(0) translateY(0)";
+                }, 10);
+                anyChanged = true;
+            }
+        });
+
+        if (anyChanged) {
+            document.getElementById("websiteUnFocus").style.transform = "translateX(0)";
+        } else {
+            document.getElementById("websiteUnFocus").style.transform = "translateX(-200px)";
+            websiteClone.style.scale = "0";
+            websiteClone.style.transform = "translateX(-100vw) translateY(-100vw)";
+            setTimeout(() => {
+                document.body.removeChild(websiteClone);
+                websiteClone = null;
+            }, 900);
+        }
+    }
+
+    function isElementInView(element) {
+        const rect = element.getBoundingClientRect();
+        return (rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + 600);
+    }
+    // Smooth scroll
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+    document.querySelector(".hero-btn").addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+    document.querySelector("#order button").addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+
+    setInterval(() => {
+        document.querySelectorAll('.websiteExample').forEach(anchor => {
+            if (isElementInView(anchor)) anchor.style.transform = "translateX(0)";
+        });
+        if (isElementInView(document.querySelector('#about'))) {
+            document.querySelector('#about').style.opacity = "1";
+            document.querySelector('#about').style.transform = "translateY(0)";
+        }
+        if (isElementInView(document.querySelector('#order'))) {
+            document.querySelector('#order').style.opacity = "1";
+            document.querySelector('#order').style.transform = "translateY(0)";
+        }
+        if (isElementInView(document.querySelector('#contact'))) {
+            document.querySelector('#contact').style.opacity = "1";
+            document.querySelector('#contact').style.transform = "translateY(0)";
+        }
+    }, 100)
+</script>
+</html>
