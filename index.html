@@ -36,7 +36,7 @@
 <h1 class="title">ORDER</h1>
 <div id="order">
     <p><b>Convinced?</b> order now and get your own portfolio website for <b>only $5!</b></p>
-    <button onclick="document.location.href='https://www.fiverr.com/s/KeaKNL8'">ORDER NOW</button>
+    <button onclick="document.location.href='order.html'">ORDER NOW</button>
     <p><b>Not convinced yet?</b> Visit our <b>contact section</b>, and we will answer any questions you have about this service!</p>
     <button onclick="document.location.href='#contact'">CONTACT US</button>
 </div>
@@ -95,7 +95,7 @@
 
     function isElementInView(element) {
         const rect = element.getBoundingClientRect();
-        return (rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + 600);
+        return (rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 75);
     }
     // Smooth scroll
     document.querySelectorAll('nav a').forEach(anchor => {
@@ -121,7 +121,10 @@
 
     setInterval(() => {
         document.querySelectorAll('.websiteExample').forEach(anchor => {
-            if (isElementInView(anchor)) anchor.style.transform = "translateX(0)";
+            if (isElementInView(anchor)) {
+                anchor.style.transform = "translateX(0)";
+                anchor.style.scale = "1";
+            }
         });
         if (isElementInView(document.querySelector('#about'))) {
             document.querySelector('#about').style.opacity = "1";
