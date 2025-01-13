@@ -5,6 +5,10 @@
     font-family: 'Arial', sans-serif;
 }
 
+html {
+    overflow-x: clip;
+}
+
 .websiteExample {
     height: 700px;
     width: min(100%, 600px);
@@ -49,7 +53,6 @@
     align-content: center;
     justify-content: space-evenly;
     margin: 0 20px;
-    overflow-x: clip;
 }
 
 #websiteUnFocus {
