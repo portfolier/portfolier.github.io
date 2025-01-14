@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donna Hoover | Portfolio</title>
+    <style>
+        /* General Styles */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        body { background: linear-gradient(to right, #141E30, #243B55); color: #fff; }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hidden { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .show { opacity: 1; transform: translateY(0); }
+
+        /* Sticky Navbar */
+        .navbar { position: fixed; width: 100%; top: 0; left: 0; background: rgba(0, 0, 0, 0.9); padding: 15px; text-align: center; z-index: 1000; animation: fadeIn 1s ease-in-out; }
+        .navbar a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: bold; transition: color 0.3s; }
+        .navbar a:hover { color: #FFD700; }
+
+        /* Hero Section */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px; }
+        .hero h1 { font-size: 4rem; }
+        .hero p { font-size: 1.8rem; margin-top: 10px; }
+        .hero button { margin-top: 20px; padding: 12px 24px; font-size: 1.2rem; background: #FFD700; border: none; cursor: pointer; transition: background 0.3s ease-in-out; }
+        .hero button:hover { background: #FFA500; }
+
+        /* Section Styling */
+        section { padding: 120px 20px; text-align: center; }
+        .panel { background: rgba(255, 255, 255, 0.1); margin: 40px auto; border-radius: 10px; padding: 70px; width: 80%; max-width: 1000px; }
+
+        /* Contact Section */
+        .contact a { color: #FFD700; text-decoration: none; font-size: 1.3rem; transition: color 0.3s; }
+        .contact a:hover { color: #FFA500; }
+
+        /* Footer */
+        footer { text-align: center; padding: 20px; background: black; margin-top: 40px; }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+</nav>
+
+<section class="hero">
+    <h1>Donna Hoover</h1>
+    <p>Full-Stack Developer | UI/UX Enthusiast | Open Source Contributor</p>
+    <button onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })">Learn More</button>
+</section>
+
+<section id="about" class="panel hidden">
+    <h2>About Me</h2>
+    <p>I am an innovative software developer with over 7 years of experience in web technologies, including React, Node.js, and Python. Passionate about building scalable applications and contributing to open-source projects.</p>
+</section>
+
+<section id="experience" class="panel hidden">
+    <h2>Work Experience</h2>
+    <p><strong>Lead Developer</strong> - GlobalTech (2021-Present)</p>
+    <p>Developing high-performance applications and leading cross-functional teams.</p>
+    <p><strong>Software Engineer</strong> - CodeCrafters (2018-2021)</p>
+    <p>Created modular, scalable solutions for large-scale clients.</p>
+</section>
+
+<section id="education" class="panel hidden">
+    <h2>Education</h2>
+    <p><strong>Master’s in Computer Science</strong> - Tech University (2015-2017)</p>
+    <p><strong>Bachelor’s in Information Technology</strong> - Digital Academy (2011-2015)</p>
+</section>
+
+<section id="skills" class="panel hidden">
+    <h2>Skills</h2>
+    <p>JavaScript (React, Vue, Node.js), Python (Django, Flask), UI/UX Design, Cloud Computing (AWS, GCP)</p>
+</section>
+
+<section id="projects" class="panel hidden">
+    <h2>Projects</h2>
+    <p><strong>AI Chatbot</strong> - Built an NLP-powered chatbot for customer support automation.</p>
+    <p><strong>Finance Tracker</strong> - Developed a budgeting app with data visualization.</p>
+    <p><strong>Open Source Library</strong> - Contributed to a JavaScript utility library used by thousands.</p>
+</section>
+
+<section id="contact" class="panel hidden">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:john.doe@example.com">john.doe@example.com</a></p>
+    <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+</section>
+
+<footer>
+    <p>&copy; 2025 John Doe</p>
+</footer>
+
+<script>
+    document.addEventListener("scroll", function() {
+        const sections = document.querySelectorAll(".hidden");
+        sections.forEach(section => {
+            if (section.getBoundingClientRect().top < window.innerHeight * 0.75) {
+                section.classList.add("show");
+            }
+        });
+    });
+</script>
+</body>
+</html>
