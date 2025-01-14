@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elijah James Calloway | Portfolio</title>
+    <style>
+        /* Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(120deg, #1e3c72, #2a5298);
+            color: white;
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #66c2ff;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: url('https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg') no-repeat center/cover;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin: 10px 0;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeIn 2s 1s forwards;
+        }
+
+        .hero button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 10px;
+            border: none;
+            background: #66c2ff;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeIn 2s 2s forwards;
+        }
+
+        .hero button:hover {
+            background: #1e3c72;
+        }
+
+        section {
+            padding: 100px 20px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+        }
+
+        section.visible {
+            opacity: 1;
+        }
+
+        .panel {
+            max-width: 1000px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .about-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .projects .card {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 300px;
+            border-radius: 10px;
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUp 1s forwards;
+        }
+
+        .projects .card:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-info a {
+            color: #66c2ff;
+            font-size: 20px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: black;
+        }
+
+        /* Keyframes for Animations */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="navbar">
+    <a onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">About Me</a>
+    <a onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">Projects</a>
+    <a onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Contact</a>
+</div>
+<div class="hero">
+    <h1>Elijah James Calloway</h1>
+    <p>Environmental Consultant | Adventurer</p>
+    <button onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">Learn More</button>
+</div>
+<section id="about">
+    <h2>About Me</h2>
+    <div class="panel about-grid">
+        <div class="about-item"><strong>Nickname:</strong> Eli</div>
+        <div class="about-item"><strong>Born:</strong> August 17, 1991, Denver, Colorado</div>
+        <div class="about-item"><strong>Ethnicity:</strong> Mixed (Irish and Mexican descent)</div>
+        <div class="about-item"><strong>Education:</strong> University of Oregon (B.A. in Environmental Science)</div>
+        <div class="about-item"><strong>Career:</strong> Environmental Consultant, former park ranger, bartender, freelance writer</div>
+        <div class="about-item"><strong>Languages:</strong> English, Spanish, some German</div>
+        <div class="about-item"><strong>Hobbies:</strong> Hiking, rock climbing, basketball, playing harmonica</div>
+    </div>
+</section>
+<section id="projects" class="projects">
+    <h2>Projects</h2>
+    <div class="panel">
+        <div class="card">
+            <h3>Eco Restoration Project</h3>
+            <p>Worked on restoring native plant ecosystems.</p>
+        </div>
+        <div class="card">
+            <h3>Renewable Energy Initiative</h3>
+            <p>Consulted for companies implementing solar power solutions.</p>
+        </div>
+        <div class="card">
+            <h3>Wildlife Conservation Research</h3>
+            <p>Conducted studies on endangered species habitats.</p>
+        </div>
+    </div>
+</section>
+<section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <div class="panel">
+        <p>If you'd like to get in touch, you can reach me through the following:</p>
+        <div class="contact-info">
+            <p>Email: <a href="mailto:elijah.calloway@example.com">elijah.calloway@example.com</a></p>
+            <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+        </div>
+    </div>
+</section>
+<footer>
+    <p>&copy; 2025 Elijah James Calloway</p>
+</footer>
+
+<script>
+    function isElementInView(element) {
+        const rect = element.getBoundingClientRect();
+        return (rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + 600);
+    }
+
+    window.addEventListener('scroll', () => {
+        document.querySelectorAll('section').forEach(section => {
+            if (isElementInView(section)) {
+                section.classList.add('visible');
+            } else {
+                section.classList.remove('visible');
+            }
+        });
+
+        document.querySelectorAll('.projects .card').forEach(card => {
+            if (isElementInView(card)) {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }
+        });
+    });
+</script>
+</body>
+
+</html>
