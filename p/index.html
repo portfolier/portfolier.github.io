@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giuseppe Casilli - Professional Chef</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #f1c40f;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/dishes/8.webp');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--secondary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: var(--light-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .about-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .about-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .work-experience {
+            grid-column: 1 / -1;
+        }
+
+        .work-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .work-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .work-item h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .work-item .date {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .work-item .location {
+            color: #666;
+            font-style: italic;
+        }
+
+        .work-item ul {
+            margin-top: 0.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .work-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 5rem 2rem;
+        }
+
+        .carousel {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            padding: 2rem 0;
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            align-items: center;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel-item .image-container {
+            width: 600px;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.9);
+            border: none;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-button:hover {
+            background: var(--white);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev {
+            left: 1rem;
+        }
+
+        .next {
+            right: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: var(--light-bg);
+            text-align: center;
+        }
+
+        .contact-info {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .contact-info p {
+            margin: 1rem 0;
+        }
+
+        .contact-info a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .carousel-item .image-container {
+                width: 90vw;
+                height: 90vw;
+                max-width: 400px;
+                max-height: 400px;
+            }
+
+            .carousel-button {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">Giuseppe Casilli</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Giuseppe Casilli</h1>
+            <p>Professional Chef <b>|</b> Culinary Artist</p>
+            <a href="#about" class="cta-button">Learn More</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-card">
+                <h3>Professional Summary</h3>
+                <p>Talented and Enthusiastic Cook with undeniable talents in developing menus to draw in clientele. Passionate individual creating healthy dishes made with locally grown ingredients. Ready for new challenge creating tasty meals for successful establishment.</p>
+            </div>
+            <div class="about-card">
+                <h3>Education</h3>
+                <p>Instituto Professionale Di Stato "Telese"<br>
+                Hotel Management Institute, Ischia, Italy<br>
+                2012</p>
+            </div>
+            <div class="about-card">
+                <h3>Languages</h3>
+                <p>Italian: Native language<br>
+                English: Upper intermediate (B2)</p>
+            </div>
+            <div class="about-card work-experience">
+                <h3>Skills</h3>
+                <div class="work-item">
+                    <h4>Technical Skills</h4>
+                    <p>Proficient in standard IT systems, good general knowledge, analytical intelligence, sociability, collaboration, willingness, maturity, and discretion.</p>
+                </div>
+                <div class="work-item">
+                    <h4>Communication Skills</h4>
+                    <p>Clear and precise communication, responsive to specific requests, good relational skills with clients and colleagues gained through diverse professional experiences.</p>
+                </div>
+            </div>
+            <div class="about-card work-experience">
+                <h3>Work Experience</h3>
+                <div class="work-item">
+                    <h4>Sous Chef</h4>
+                    <div class="date">December 2022 - Current</div>
+                    <div class="location">Huus Hotel Gstaad (4-Star Superior Hotel), Switzerland</div>
+                    <ul>
+                        <li>Manage food preparation tasks during high-volume service periods, ensuring all orders were executed in a timely manner without sacrificing quality or presentation standards.</li>
+                        <li>Plan and direct high-volume food preparation in fast-paced environment.</li>
+                    </ul>
+                </div>
+                <div class="work-item">
+                    <h4>Chef De Partie</h4>
+                    <div class="date">May 2021 - December 2022</div>
+                    <div class="location">Huus Hotel (Gstaad) (4-Star Hotel)</div>
+                </div>
+                <div class="work-item">
+                    <h4>Chef De Partie</h4>
+                    <div class="date">May 2020 - November 2020</div>
+                    <div class="location">Grifo Hotel (Casamicciola) (4-Star Hotel), Italy</div>
+                </div>
+                <div class="work-item">
+                    <h4>Chef De Partie</h4>
+                    <div class="date">April 2019 - November 2019</div>
+                    <div class="location">Ristorante Indaco (Lacco Ameno) (1 Michelin Star)</div>
+                </div>
+                <div class="work-item">
+                    <h4>Commis de Cuisine</h4>
+                    <div class="date">December 2018 - April 2019</div>
+                    <div class="location">Huus Hotel (Gstaad) (4-Star Hotel)</div>
+                </div>
+                <div class="work-item">
+                    <h4>Chef de Partie</h4>
+                    <div class="date">May 2018 - November 2018</div>
+                    <div class="location">Hotel Regina Isabella (Lacco Ameno) (5-Star Hotel)</div>
+                </div>
+                <div class="work-item">
+                    <h4>Demi Chef</h4>
+                    <div class="date">May 2017 - November 2017</div>
+                    <div class="location">Hotel Regina Isabella (Lacco Ameno) (5-Star Hotel)</div>
+                </div>
+                <div class="work-item">
+                    <h4>Commis de Cuisine</h4>
+                    <div class="date">April 2016 - October 2016</div>
+                    <div class="location">Hotel Don Pepe (Lacco Ameno) (4-Star Hotel)</div>
+                </div>
+                <div class="work-item">
+                    <h4>Commis de Cuisine</h4>
+                    <div class="date">April 2015 - October 2015</div>
+                    <div class="location">Hotel Don Pepe (Lacco Ameno) (4-Star Hotel)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <h2 class="section-title">My Work</h2>
+        <div class="carousel">
+            <div class="carousel-container">
+                <div class="carousel-item">
+                    <div class="image-container">
+                        <img src="/dishes/1.webp" alt="Culinary Creation 1">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="image-container">
+                        <img src="/dishes/2.webp" alt="Culinary Creation 2">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="image-container">
+                        <img src="/dishes/3.webp" alt="Culinary Creation 3">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="image-container">
+                        <img src="/dishes/4.webp" alt="Culinary Creation 4">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="image-container">
+                        <img src="/dishes/5.webp" alt="Culinary Creation 5">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="image-container">
+                        <img src="/dishes/6.webp" alt="Culinary Creation 6">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="image-container">
+                        <img src="/dishes/7.webp" alt="Culinary Creation 7">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="image-container">
+                        <img src="/dishes/8.webp" alt="Culinary Creation 8">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="image-container">
+                        <img src="/dishes/9.webp" alt="Culinary Creation 9">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="image-container">
+                        <img src="/dishes/10.webp" alt="Culinary Creation 10">
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-button prev">❮</button>
+            <button class="carousel-button next">❯</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <p>If you'd like to get in touch, you can reach me through the following:</p>
+        <div class="contact-info">
+            <p>Email: <a href="mailto:Peppe_casilli@hotmail.it">Peppe_casilli@hotmail.it</a></p>
+            <p>Phone: <a href="tel:+393317285539">+39 331 728 5539</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© <soan id="year"></soan> Giuseppe Casilli</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        // Carousel functionality
+        const carousel = document.querySelector('.carousel-container');
+        const items = document.querySelectorAll('.carousel-item');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel();
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.8)';
+            }
+        });
+    </script>
+</body>
+</html> 
